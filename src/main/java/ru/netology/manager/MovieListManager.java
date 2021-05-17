@@ -4,33 +4,18 @@ import ru.netology.domain.Movie;
 
 public class MovieListManager {
   private Movie[] movies = new Movie[0];
-  private int moviesListNumber = 10;
+  private int moviesListNumber = 8;
 
-  public MovieListManager(Movie[] movies) {
-    this.movies = movies;
-  }
-
-  public MovieListManager(Movie[] movies, int moviesListNumber) {
-    this.movies = movies;
+  public MovieListManager(int moviesListNumber) {
     this.moviesListNumber = moviesListNumber;
   }
 
-  public int getMoviesListNumber() {
-    return moviesListNumber;
+  public MovieListManager() {
   }
-
-  public Movie[] getMovies() {
-    return movies;
-  }
-
-  public MovieListManager(int i) {
-
-  }
-
 
   public void addToList(Movie movie) {
 
-    int length = movies.length + 1;
+    int length = movies.length+1;
     Movie[] tmp = new Movie[length];
     System.arraycopy(movies, 0, tmp, 0, movies.length);
     int lastIndex = tmp.length - 1;
@@ -39,20 +24,18 @@ public class MovieListManager {
     movies = tmp;
 
   }
-
+  public Movie[] findAll() {
+    return movies;
+  }
 
   public Movie[] pullMovieList() {
-    if (movies.length < moviesListNumber) {
-      moviesListNumber = movies.length;
-    }
-
-
-    Movie[] list = new Movie[moviesListNumber];
-    for (int i = 0; i <moviesListNumber; i++) {
+    int count =  moviesListNumber;
+    if (movies.length < count) count = movies.length;
+    Movie[] list = new Movie[count];
+    for (int i = 0; i <list.length; i++) {
       int index = movies.length - i - 1;
       list[i] = movies[index];
     }
     return list;
   }
-
 }

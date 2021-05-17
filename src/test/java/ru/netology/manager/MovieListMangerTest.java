@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 
 class MovieListTest {
-  private MovieListManager list = new MovieListManager(9);
+  private MovieListManager list = new MovieListManager(10);
   private Movie first = new Movie(1, 1, "Cinema", 1);
   private Movie second = new Movie(2, 1, "Cinema", 1);
   private Movie third = new Movie(3, 1, "Cinema", 1);
@@ -67,7 +67,7 @@ class MovieListTest {
     list.addToList(tenth);
     list.addToList(extra);
     Movie[] actual = list.pullMovieList();
-    Movie[] expected = new Movie[]{extra, tenth,ninth,eighth, seventh, sixth, fifth, fourth, third, second};
+    Movie[] expected = new Movie[]{extra, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second};
     assertArrayEquals(expected, actual);
   }
 
